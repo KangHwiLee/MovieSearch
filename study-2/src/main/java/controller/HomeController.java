@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+	@GetMapping("/guest/movies")
+	public String movies() {
+		return "test";
+	}
+	
 	@GetMapping("/login")
 	public String test() {
 		return "index";
@@ -15,6 +20,11 @@ public class HomeController {
 	@GetMapping("/success")
 	public String success() {
 		return "success";
+	}
+	
+	@GetMapping("/test")
+	public String permit() {
+		return "test";
 	}
 	
 }

@@ -14,8 +14,8 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		
-		http
-			.authorizeHttpRequests().antMatchers("/css/**", "/js/**", "/login", "/").permitAll()
+		http.csrf().disable()
+			.authorizeHttpRequests().antMatchers("/guest/**", "/css/**", "/js/**", "/login", "/").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().authenticated()
             .and()

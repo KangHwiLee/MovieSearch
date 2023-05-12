@@ -46,11 +46,14 @@ public class test {
 			logger.error("데이터 조회 중 오류:{}", e.getMessage());
 		}
 		JSONObject json = new JSONObject(result);
-		//System.out.println(json.get("results"));
 		JSONArray array = (JSONArray)json.get("results");
-//		System.out.println(json);
 		array.forEach(a -> 	{
+			JSONObject json2 = new JSONObject(a.toString());
 			System.out.println(a);
+			System.out.println("title : " + json2.getString("title"));
+			System.out.println("original title : " + json2.getString("original_title"));
+			System.out.println("평점 : " + json2.getDouble("vote_average"));
+			System.out.println("줄거리 : " + json2.getString("overview"));
 			System.out.println("");
 		}); 
 
