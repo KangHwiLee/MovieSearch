@@ -43,7 +43,7 @@ public class test {
 			result = data.toString();
 		
 		}catch(Exception e){
-			logger.error("기상청 공공데이터 정보요청중 오류:{}", e.getMessage());
+			logger.error("데이터 조회 중 오류:{}", e.getMessage());
 		}
 		JSONObject json = new JSONObject(result);
 		//System.out.println(json.get("results"));
