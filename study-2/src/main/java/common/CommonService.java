@@ -1,6 +1,7 @@
 package common;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -12,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CommonService {
@@ -73,4 +75,22 @@ public class CommonService {
 	return array;
 	
 	}
+	
+	public String upload(String phone, MultipartFile file) {
+		String path = "C:\\project\\file-upload\\"+phone;
+	//	String path = "C:\\Users\\User\\Desktop\\test (1)\\";
+		File f = new File( path );
+		if( !f.exists() ) f.mkdirs();
+			
+		String uuid = phone + "_updator_" + file.getOriginalFilename();
+		try {
+			file.transferTo( new File(path, uuid) );
+		}catch(Exception e) {
+			e.getStackTrace();
+		}
+		System.out.println("??");
+		return "success";
+		
+	}
+	
 }

@@ -12,6 +12,11 @@ public class HomeController {
 		return "test";
 	}
 	
+	@GetMapping("/guest/file-manage")
+	public String file_manage() {
+		return "file-manage";
+	}
+	
 	@GetMapping("/login")
 	public String test() {
 		return "index";

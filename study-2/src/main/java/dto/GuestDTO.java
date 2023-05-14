@@ -1,5 +1,7 @@
 package dto;
 
+import java.io.File;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,8 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MovieDTO {
+public class GuestDTO {
 
-	private String keyword;
+	private String keyword, phone;
 	
 }

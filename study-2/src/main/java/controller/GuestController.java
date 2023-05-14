@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import common.CommonService;
-import dto.MovieDTO;
+import dto.GuestDTO;
 
 @RestController
 
@@ -25,12 +26,20 @@ public class GuestController {
 	@Autowired CommonService common;
 	
 	@PostMapping("/movies")
-	public String movies(@RequestBody MovieDTO movie){
+	public String movies(@RequestBody GuestDTO movie){
 		//List<JSONObject> list = common.MovieSearch(movie.getKeyword());
 		JSONArray arr = common.MovieSearch(movie.getKeyword());
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("data", arr.toString());
 		return arr.toString();
+	}
+	
+	@PostMapping("/file-upload")
+	public String file_uploae(GuestDTO dto, MultipartFile file) {
+		
+		common.upload(dto.getPhone(), file);
+		
+		return null;
 	}
 	
 }
