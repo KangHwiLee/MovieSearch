@@ -2,6 +2,7 @@ package common;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
@@ -76,21 +78,55 @@ public class CommonService {
 	
 	}
 	
+	private String root = "C:\\file-upload\\";
+	
+//	public String upload(String phone, MultipartFile file) {
+//		String path = root+phone;
+//		File r = new File( root );
+//		File f = new File( path );
+//		if( !r.exists() ) r.mkdirs();
+//		if( !f.exists() ) f.mkdirs();
+//			
+//		try {
+//		InputStream fileStream = file.getInputStream();
+//		FileUtils.copyInputStreamToFile(fileStream, f);
+//		}catch(Exception e) {
+//			e.getStackTrace();
+//		}
+//		return "success";
+//	}
 	public String upload(String phone, MultipartFile file) {
-		String path = "C:\\project\\file-upload\\"+phone;
-	//	String path = "C:\\Users\\User\\Desktop\\test (1)\\";
+		String path = root+phone;
+		File r = new File( root );
 		File f = new File( path );
+		if( !r.exists() ) r.mkdirs();
 		if( !f.exists() ) f.mkdirs();
-			
+		
 		String uuid = phone + "_updator_" + file.getOriginalFilename();
 		try {
-			file.transferTo( new File(path, uuid) );
+			file.transferTo( new File(path, file.getOriginalFilename()) );
 		}catch(Exception e) {
 			e.getStackTrace();
 		}
-		System.out.println("??");
 		return "success";
+	}
+	
+	public String[] file_check(String phone){
+		String path = root+phone;
+		File d = new File(path);
+		System.out.println(path);
+		if(!d.exists()) {
+			System.out.println("파일이 없음");
+			return null;
+		}
+		File files[] = d.listFiles();
+		String result[] = new String[files.length];
+		for (int i = 0; i < files.length; i++) {
+		    System.out.println("file: " + files[i].getName());
+		    result[i] = files[i].getName();
+		}
 		
+		return result;
 	}
 	
 }
