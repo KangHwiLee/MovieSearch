@@ -31,5 +31,8 @@ public class HomeController {
 	public String permit() {
 		return "test";
 	}
-	
+	@GetMapping("/guest/pay")
+	public String pay() {
+		return "pay";
+	}
 }
