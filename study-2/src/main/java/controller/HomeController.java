@@ -4,6 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+
 @Controller
 public class HomeController {
 
@@ -35,4 +39,12 @@ public class HomeController {
 	public String pay() {
 		return "pay";
 	}
+	
+	@GetMapping("/guest/chat")
+    public String chatGET(){
+
+        log.info("@ChatController, chat GET()");
+        
+        return "chat";
+    }
 }

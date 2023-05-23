@@ -24,8 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import common.CommonService;
 import dto.GuestDTO;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
+@Log4j2
 
 @RequestMapping("/guest")
 public class GuestController {
