@@ -1,11 +1,14 @@
 package chat;
 
 import lombok.extern.log4j.Log4j2;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,4 +46,5 @@ public class ChatHandler extends TextWebSocketHandler {
         log.info(session + " 클라이언트 접속 해제");
         list.remove(session);
     }
+    
 }
